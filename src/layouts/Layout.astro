@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import "../styles/global.css";
+import '@fontsource-variable/onest/wght.css';
 ---
 
 <!doctype html>
@@ -20,17 +21,19 @@ import "../styles/global.css";
   </body>
 </html>
 
-<style>
-  root: {
+<style is:global>
+  :root {
     color-scheme: light dark;
   }
   html {
-    font-family: system-ui, sans-serif;
+    font-family: 'Onest Variable', system-ui, sans-serif;
   }
-  ,
+
   body {
-    background: blue;
+    background: #050505;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    height: 100vh;
   }
 </style>
