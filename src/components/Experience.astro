@@ -1,0 +1,36 @@
+---
+import SchoolItem from "./SchoolItem.astro";
+
+// Aquí guardas toda tu información de forma ordenada
+const STUDIES = [
+  {
+    date: "Actualidad",
+    title: "Desarrollador de Software Freelance",
+    description:
+      "Diseño y desarrollo de aplicaciones web y de escritorio a medida. Enfocado en crear soluciones tecnológicas eficientes e integraciones de API para impulsar la digitalización y optimizar los procesos de pequeños comercios y negocios en Córdoba y la región.",
+  },
+  {
+    date: "2025 - Hutchison Ports ICAVE / Grupo CODA",
+    title: "Desarrollador Web Jr.",
+    description:
+      "Responsable del ciclo de vida técnico de aplicaciones críticas en un entorno de alta exigencia portuaria. Durante mi gestión, he liderado el diseño y construcción de APIs (REST/SOAP) desde cero, estableciendo arquitecturas escalables que optimizan el flujo operativo. ",
+    link: "#", // Este sí mostrará el botón
+  },
+  {
+    date: "Coordinados de México Oriente, S.A de C.V",
+    title: "Desarrollador de Aplicaciones.",
+    description:
+      "Desarrollo de un sistema de gestión de Seguridad e Higiene para Mobility ADO, enfocado en asegurar el cumplimiento de las normativas internas de la empresa. La solución fue construida como una aplicación de escritorio utilizando Java y JavaFX, respaldada por una base de datos PostgreSQL y desplegada en un entorno de nube para garantizar la disponibilidad centralizada de la información.",
+  },
+];
+---
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700">
+  {
+    STUDIES.map((study) => (
+      <li class="mb-10 ms-4">
+        <SchoolItem {...study} />
+      </li>
+    ))
+  }
+</ol>
