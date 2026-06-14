@@ -2,16 +2,22 @@
 //import Welcome from '../components/Welcome.astro';
 import Badge from "../components/Badge.astro";
 import Layout from "../layouts/Layout.astro";
+import LinkedInIcon from "../components/icons/LinkedIn.astro";
+import SocialPill from "../components/SocialPill.astro";
+import GitHubIcon from "../components/icons/GitHubIcon.astro";
+import MailIcon from "../components/icons/Mail.astro";
+import SchoolItem from "../components/SchoolItem.astro";
+import School from "../components/School.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout title="Welcome to Astro">
+<Layout title="Portfolio Jose Fabian - Desarrollador y programador web." description="Informacion personal a cerca de mí.">
   <main>
     <section class="w-full mx-auto lg:w-[740px] py-44">
       <img
-        class="rounded-full w-12 w-12 mb-4"
+        class="rounded-full size-12 mb-4"
         src="/src/components/myselft_pic.jpg"
         alt="fabian photo for portfolio"
       />
@@ -27,12 +33,32 @@ import Layout from "../layouts/Layout.astro";
           </div>
         </a>
       </h1>
-      <h2 class="text-2xl opacity-80">
-        2 años de experiencia desarrollando aplicaciones web y escritorio.
-        Originario de Córdoba, Ver. Especializado en soluciones Back-End e
-        integraciones con API's
+      <h2 class="text-2xl text-wrap">
+        <span> Desarrollador de aplicaciones web y escritorio.</span>
+        <span class="text-yellow-200/90">Originario de Córdoba, Ver. </span>
+        <span
+          >Especializado en soluciones Back-End e integraciones con API's</span
+        >
       </h2>
-      <ul></ul>
+      <nav class = "flex gap-x-2 mt-8">
+        <SocialPill
+          href="https://www.linkedin.com/in/josé-fabián-salcedo-estrada-ba3a81241"
+        >
+          <LinkedInIcon class="size-6" />
+          LinkedIn
+        </SocialPill>
+        <SocialPill href="https://github.com/deimosestr">
+          <GitHubIcon class="size-6" />
+          GitHub
+        </SocialPill>
+		 <SocialPill href="">
+          <MailIcon class="size-6" />
+          fabiestrada19@outlook.com
+        </SocialPill>
+      </nav>
     </section>
+	<section>
+		<School/>
+	</section>
   </main>
 </Layout>
