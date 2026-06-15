@@ -21,14 +21,14 @@ import SchoolIcon from "../components/icons/SchoolIcon.astro";
   title="Portfolio Jose Fabian - Desarrollador y programador web."
   description="Informacion personal a cerca de mí."
 >
-  <main>
+  <main class="px-4">
     <SectionContainer class="py-44 pb-24">
       <img
-        class="rounded-full size-12 mb-4"
-        src="/src/components/myselft_pic.jpg"
+        class="rounded-full size-20 mb-10"
+        src="/src/components/photos/1595.jpg"
         alt="fabian photo for portfolio"
       />
-      <h1 class="text-white text-5xl font-bold flex flex-row gap-x-4 pb-4">
+      <h1 class="text-white text-3xl md:text-4xl font-bold flex flex-row gap-x-4 pb-4 lg:pb-10">
         Hola, soy José Fabián <a
           href="https://www.linkedin.com/in/josé-fabián-salcedo-estrada-ba3a81241"
           target="_blank"
@@ -40,35 +40,41 @@ import SchoolIcon from "../components/icons/SchoolIcon.astro";
           </div>
         </a>
       </h1>
-      <h2 class="text-2xl text-wrap">
+      <h2 class="text-2xl text-wrap max-w-[700px]">
         <span> Desarrollador de aplicaciones web y escritorio.</span>
         <span class="text-yellow-200/90">Originario de Córdoba, Ver. </span>
         <span
           >Especializado en soluciones Back-End e integraciones con API's</span
         >
       </h2>
-      <nav class="flex gap-x-2 mt-8">
+      <nav class="flex gap-2 mt-8 flex-wrap">
         <SocialPill
           href="https://www.linkedin.com/in/josé-fabián-salcedo-estrada-ba3a81241"
+          target="_blank"
+          rel="noopener"
         >
-          <LinkedInIcon class="size-6" />
+          <LinkedInIcon class="size: 4 lg:size-6" />
           LinkedIn
         </SocialPill>
-        <SocialPill href="https://github.com/deimosestr">
-          <GitHubIcon class="size-6" />
+        <SocialPill
+          href="https://github.com/deimosestr"
+          target="_blank"
+          rel="noopener"
+        >
+          <GitHubIcon class="size: 4 lg:size-6" />
           GitHub
         </SocialPill>
-        <SocialPill href="">
-          <MailIcon class="size-6" />
+        <SocialPill href="mailto:fabiestrada19@outlook.com">
+          <MailIcon class="size: 4 lg:size-6" />
           fabiestrada19@outlook.com
         </SocialPill>
       </nav>
     </SectionContainer>
-    <SectionContainer id="academy">
-      <h2 class="text-2xl font-semibold mb-4 flex gap-x-3 items items-center">
-		<ExperienceIcon class="size-7"/>
-        <!--<SchoolIcon class="size-7" /> -->
-        Experiencia Laboral
+
+    <SectionContainer id="experience">
+      <h2 class="text-2xl font-semibold mb-4 flex gap-x-3 items-center">
+        <ExperienceIcon class="size-7" />
+        Experiencia laboral
       </h2>
       <Experience />
     </SectionContainer>
