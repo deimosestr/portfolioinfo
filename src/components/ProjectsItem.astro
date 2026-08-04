@@ -1,0 +1,45 @@
+---
+// src/components/ProjectsItem.astro
+interface Props {
+  title: string;
+  date: string;
+  type: string;
+  description: string;
+  image: string;
+  technologies: string[];
+  link: string;
+}
+
+const { title, date, type, description, image, technologies, link } =
+  Astro.props;
+
+const techString = technologies.join(" • ");
+---
+
+<li
+  class="file-item flex items-center p-2 text-sm text-gray-800 dark:text-gray-200 hover:bg-blue-50 dark:hover:bg-white/5 cursor-pointer rounded transition-colors select-none"
+  data-title={title}
+  data-desc={description}
+  data-img={image}
+  data-tech={techString}
+  data-link={link}
+>
+  <div class="w-1/2 flex items-center gap-2 px-2">
+    <svg
+      class="size-4 text-blue-500 min-w-4"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+    >
+      <path
+        d="M4 0h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z"
+      ></path>
+    </svg>
+    <span class="truncate">{title}</span>
+  </div>
+  <div class="w-1/4 text-xs text-gray-500 dark:text-gray-400 truncate px-2">
+    {date}
+  </div>
+  <div class="w-1/4 text-xs text-gray-500 dark:text-gray-400 truncate px-2">
+    {type}
+  </div>
+</li>

@@ -1,0 +1,71 @@
+---
+// src/components/ContactMe.astro
+import ContactItem from "./ContactMeItem.astro";
+import LinkedInIcon from "./icons/LinkedIn.astro";
+import GitHubIcon from "./icons/GitHubIcon.astro";
+import MailIcon from "./icons/Mail.astro";
+---
+
+<div
+  class="w-full max-w-5xl mx-auto p-4 md:p-8 rounded-3xl bg-white/40 dark:bg-[#151515]/60 backdrop-blur-xl border border-white/50 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] relative overflow-hidden"
+>
+  <div
+    class="absolute top-[-50%] left-[-10%] w-96 h-96 bg-blue-500/10 dark:bg-blue-500/20 blur-3xl rounded-full pointer-events-none"
+  >
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-8 relative z-10">
+    <ContactItem
+      platform="LinkedIn"
+      username="José Fabián"
+      link="https://www.linkedin.com/in/josé-fabián-salcedo-estrada-ba3a81241"
+      actionText="Conectar"
+    >
+      <LinkedInIcon slot="icon" class="size-12 sm:size-14" />
+    </ContactItem>
+
+    <ContactItem
+      platform="GitHub"
+      username="deimosestr"
+      link="https://github.com/deimosestr"
+      actionText="Iniciar sesión"
+    >
+      <GitHubIcon slot="icon" class="size-12 sm:size-14" />
+    </ContactItem>
+
+    <div
+      id="secure-mail"
+      data-user="fabiestrada19"
+      data-domain="outlook.com"
+      class="contents"
+    >
+      <ContactItem
+        platform="Correo"
+        username="fabiestrada19"
+        link="#"
+        actionText="Redactar"
+      >
+        <MailIcon slot="icon" class="size-12 sm:size-14" />
+      </ContactItem>
+    </div>
+  </div>
+</div>
+
+<script>
+  
+  const mailContainer = document.getElementById("secure-mail");
+  if (mailContainer) {
+    const user = mailContainer.getAttribute("data-user");
+    const domain = mailContainer.getAttribute("data-domain");
+    const anchor = mailContainer.querySelector("a"); 
+
+    if (anchor && user && domain) {
+      const armarCorreo = () => {
+        anchor.href = `mailto:${user}@${domain}`;
+      };
+
+      anchor.addEventListener("mouseenter", armarCorreo);
+      anchor.addEventListener("touchstart", armarCorreo, { passive: true });
+    }
+  }
+</script>

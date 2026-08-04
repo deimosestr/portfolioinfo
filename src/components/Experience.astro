@@ -1,36 +1,33 @@
 ---
+// src/components/Experience.astro
 import ExperienceItem from "./ExperienceItem.astro";
 
-// Aquí guardas toda tu información de forma ordenada
 const EXPERIENCE = [
   {
-    date: "Actualidad",
-    title: "Desarrollador de Software Freelance",
+    date: "2025 - Presente",
+    company: "Desarrollador Full-Stack Independiente",
+    title: "Software & Soluciones a Medida",
     description:
-      "Diseño y desarrollo de aplicaciones web y de escritorio a medida. Enfocado en crear soluciones tecnológicas eficientes e integraciones de API para impulsar la digitalización y optimizar los procesos de pequeños comercios y negocios en Córdoba y la región.",
+      "Lideré el diseño y desarrollo integral de aplicaciones web y de escritorio a medida. Construí arquitecturas backend robustas e integraciones de API para impulsar la digitalización y optimizar los flujos operativos de clientes en la región.",
   },
   {
-    date: "2025 - Hutchison Ports ICAVE / Grupo CODA",
+    date: "2025 - 2026",
+    company: "Grupo Coda / Hutchison Ports ICAVE",
     title: "Desarrollador Web Jr.",
     description:
-      "Responsable del ciclo de vida técnico de aplicaciones críticas en un entorno de alta exigencia portuaria. Durante mi gestión, he liderado el diseño y construcción de APIs (REST/SOAP) desde cero, estableciendo arquitecturas escalables que optimizan el flujo operativo. ",
-    link: "#", // Este sí mostrará el botón
+      "Lideré la gestión de aplicaciones críticas y el ciclo de vida técnico del software en un entorno portuario de alta exigencia. Diseñé y construí APIs (REST/SOAP) desde cero, administré despliegues en producción mediante Azure, optimicé el rendimiento en bases de datos Oracle y aseguré la continuidad operativa en servidores Apache Tomcat.",
+    link: "#",
   },
   {
-    date: "Coordinados de México Oriente, S.A de C.V",
-    title: "Desarrollador de Aplicaciones.",
+    date: "2023 - 2024",
+    company: "Coordinados de México Oriente, S.A de C.V",
+    title: "Residente - Desarrollador de Aplicaciones",
     description:
-      "Desarrollo de un sistema de gestión de Seguridad e Higiene para Mobility ADO, enfocado en asegurar el cumplimiento de las normativas internas de la empresa. La solución fue construida como una aplicación de escritorio utilizando Java y JavaFX, respaldada por una base de datos PostgreSQL y desplegada en un entorno de nube para garantizar la disponibilidad centralizada de la información.",
+      "Lideré el desarrollo de un sistema automatizado de gestión de Seguridad e Higiene para Mobility ADO para asegurar el cumplimiento estricto de las normativas internas. Diseñé e implementé la solución como una aplicación de escritorio robusta utilizando Java y JavaFX, respaldada por una base de datos PostgreSQL.",
   },
 ];
 ---
 
-<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-3">
-  {
-    EXPERIENCE.map((study) => (
-      <li class="mb-10 ms-4">
-        <ExperienceItem {...study} />
-      </li>
-    ))
-  }
-</ol>
+<div class="w-full flex flex-col gap-3">
+  {EXPERIENCE.map((item) => <ExperienceItem {...item} />)}
+</div>

@@ -1,0 +1,159 @@
+---
+// src/components/About.astro
+import AboutItem from "./AboutItem.astro";
+
+const ABOUT_DATA = [
+  {
+    command: ".\\whoami.exe",
+    response:
+      "Desarrollador Backend & Full Stack originario de Córdoba, Veracruz. Apasionado por resolver problemas reales con código estructurado y eficiente.",
+    delay: "100ms",
+  },
+  {
+    command: ".\\execute_impact.ps1",
+    response:
+      "[STATUS: ONLINE] Transformo requerimientos complejos en integraciones fluidas. Me especializo en automatizar procesos y construir arquitecturas sólidas que garantizan la continuidad operativa.",
+    delay: "600ms",
+  },
+  {
+    command: "Get-Content .\\current_focus.json",
+    response:
+      "Creación de soluciones de alto rendimiento con C#, Node.js y bases de datos relacionales, respaldadas por el ecosistema Cloud (Azure).",
+    delay: "1100ms",
+  },
+  {
+    command: "cd .\\education\\; Get-Content degree.info",
+    response:
+      "[2020 - 2024] Ing. en Sistemas - Tecnológico Nacional de México Campus Orizaba. Especialidad en Desarrollo y Seguridad Web.",
+    delay: "1600ms",
+  },
+  {
+    command: "Get-ChildItem .\\congresses\\",
+    response: [
+      "-> 10° Congreso Nacional: Programación en Python e introducción a Blender.",
+      "-> 11° Congreso Nacional: Desarrollo estratégico de aplicaciones móviles escalables.",
+    ],
+    delay: "2100ms",
+  },
+  {
+    command: ".\\tdah_project.exe",
+    response:
+      "[LOADING INNOVATION...] Proyecto TDAH: Aplicación web y videojuego con el potencial de revolucionar el diagnóstico clínico.",
+    delay: "2600ms",
+  },
+];
+---
+
+<div class="w-full">
+  <div
+    class="w-full rounded-xl overflow-hidden bg-[#0c0c0c] border border-gray-700 shadow-2xl flex flex-col"
+  >
+    <div
+      class="bg-[#1c1c1c] flex items-center justify-between pr-2 select-none"
+    >
+      <div
+        class="flex items-center bg-[#0c0c0c] text-gray-300 px-4 py-2 rounded-t-lg mt-1 ml-2 border-t border-x border-gray-700/50 min-w-[200px] gap-2"
+      >
+        <svg
+          class="size-4 text-blue-400"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8 9l3 3-3 3m5 0h3M4 18h16a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z"
+          ></path>
+        </svg>
+        <span class="text-xs font-medium">Windows PowerShell</span>
+      </div>
+
+      <div class="flex items-center text-gray-400">
+        <button
+          class="p-2 hover:bg-white/10 transition-colors"
+          aria-label="Minimizar"
+        >
+          <svg
+            class="size-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M19 13H5v-2h14v2z"></path></svg
+          >
+        </button>
+        <button
+          class="p-2 hover:bg-white/10 transition-colors"
+          aria-label="Maximizar"
+        >
+          <svg
+            class="size-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M4 4h16v16H4V4z"></path></svg
+          >
+        </button>
+        <button
+          class="p-2 hover:bg-red-500 hover:text-white transition-colors"
+          aria-label="Cerrar"
+        >
+          <svg
+            class="size-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              d="M6 18L18 6M6 6l12 12"></path></svg
+          >
+        </button>
+      </div>
+    </div>
+
+    <div class="p-6 sm:p-8 min-h-[300px]">
+      <div class="mb-6 font-mono text-sm text-gray-400 select-none">
+        Windows PowerShell <br />
+        Copyright (C) Microsoft Corporation. Todos los derechos reservados. <br
+        /><br />
+      </div>
+
+      <div class="flex flex-col">
+        {ABOUT_DATA.map((item) => <AboutItem {...item} />)}
+
+        <div
+          class="flex items-center gap-2 font-mono text-sm sm:text-base mt-2 opacity-0 animate-[fadeIn_0.5s_ease-out_3.2s_forwards]"
+        >
+          <span class="text-emerald-500 font-bold">PS C:\Users\Fabian></span>
+          <span
+            class="w-2.5 h-5 bg-gray-300 animate-[pulse_1s_step-end_infinite]"
+          ></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

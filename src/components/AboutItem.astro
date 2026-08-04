@@ -1,0 +1,31 @@
+---
+// src/components/AboutItem.astro
+interface Props {
+  command: string;
+  response: string | string[]; //
+  delay?: string;
+}
+
+const { command, response, delay = "0ms" } = Astro.props;
+---
+
+<div
+  class="mb-6 opacity-0 animate-[fadeIn_0.5s_ease-out_forwards]"
+  style={`animation-delay: ${delay};`}
+>
+  <div class="flex items-center gap-2 font-mono text-sm sm:text-base mb-1">
+    <span class="text-emerald-500 font-bold">PS C:\Users\Fabian></span>
+    <span class="text-gray-200 dark:text-gray-100 typing-effect">{command}</span
+    >
+  </div>
+
+  <div
+    class="font-mono text-sm sm:text-base text-gray-400 dark:text-gray-400 pl-2 border-l-2 border-gray-600 dark:border-white/20 ml-1 py-1 text-pretty"
+  >
+    {
+      Array.isArray(response)
+        ? response.map((line) => <div class="pl-2 sm:pl-4 mt-1">{line}</div>)
+        : response
+    }
+  </div>
+</div>

@@ -1,0 +1,38 @@
+---
+// src/components/TechnologiesItem.astro
+export interface Props {
+  name: string;
+  category: string;
+  description: string;
+  icon?: any;
+  iconUrl?: string;
+}
+const { name, category, description, icon: Icon, iconUrl } = Astro.props;
+---
+
+<div
+  class="tech-item flex items-center gap-3 p-3 rounded-lg border border-gray-200 dark:border-white/10 bg-white dark:bg-[#1a1a1a] hover:bg-blue-50 dark:hover:bg-white/5 cursor-pointer transition-colors select-none"
+  data-category={category}
+  data-name={name}
+  data-desc={description}
+>
+  <div
+    class="w-8 h-8 flex items-center justify-center shrink-0 text-gray-800 dark:text-gray-200"
+  >
+    {
+      Icon ? (
+        <Icon class="w-full h-full" />
+      ) : iconUrl ? (
+        <img src={iconUrl} alt={name} class="w-full h-full object-contain" />
+      ) : null
+    }
+  </div>
+  <div class="min-w-0 flex-1">
+    <h4 class="text-sm font-semibold text-gray-900 dark:text-white">{name}</h4>
+    <p
+      class="text-xs text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed"
+    >
+      {description}
+    </p>
+  </div>
+</div>

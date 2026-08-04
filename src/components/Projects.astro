@@ -1,0 +1,232 @@
+---
+// src/components/Projects.astro
+import ProjectsItem from "./ProjectsItem.astro";
+
+const PROJECTS = [
+  {
+    title: "Landing Page - Personalizados Dib",
+    date: "15/03/2024",
+    type: "Aplicación Web",
+    description:
+      "Landing page para una emprendedora del rubro textil, diseñada para dar a conocer su marca y aumentar sus ventas. El frontend se desarrolló con React y el backend con Python, desplegando una API central en un App Service de Azure.",
+    image: "/src/components/photos/personalizados_dib_icon.jpg",
+    technologies: ["React", "Python (Flask)", "Azure App Service"],
+    link: "https://github.com/",
+  },
+  {
+    title: "ADO Mobility - Escritorio (v1)",
+    date: "10/07/2024",
+    type: "App de Escritorio",
+    description:
+      "Aplicación de escritorio para el registro y gestión de bitácoras de seguridad industrial. Desarrollada en Java con JavaFX para la interfaz y PostgreSQL como motor de base de datos.",
+    image: "/src/components/photos/mobility_ado_icon.jpg",
+    technologies: ["Java", "JavaFX", "PostgreSQL"],
+    link: "#",
+  },
+  {
+    title: "ADO Mobility - Escalado en la Nube",
+    date: "20/11/2024",
+    type: "App Escritorio / Cloud",
+    description:
+      "Evolución del sistema ADO Mobility: se separó la lógica en un App Service independiente para mejorar la escalabilidad y el mantenimiento. Se implementó en Google Cloud.",
+    image: "/src/components/photos/mobility_ado_icon.jpg",
+    technologies: ["Java", "Spring Boot", "Google Cloud", "PostgreSQL"],
+    link: "#",
+  },
+];
+---
+
+<div
+  id="projects-container"
+  class="relative flex overflow-hidden border border-gray-300 dark:border-white/10 rounded-lg bg-white dark:bg-[#191919] shadow-md h-[500px] select-none"
+>
+  <div
+    id="left-panel"
+    class="w-full md:w-[65%] h-full overflow-y-auto custom-scrollbar flex-shrink-0 flex flex-col transition-none"
+  >
+    <div
+      class="flex text-xs font-semibold text-gray-500 dark:text-gray-400 border-b border-gray-300 dark:border-white/10 p-2 select-none bg-gray-50 dark:bg-[#202020] sticky top-0 z-10"
+    >
+      <div class="w-1/2 px-2">Nombre</div>
+      <div class="w-1/4 px-2">Fecha</div>
+      <div class="w-1/4 px-2">Tipo</div>
+    </div>
+
+    <ul class="flex flex-col p-1 gap-1">
+      {PROJECTS.map((project) => <ProjectsItem {...project} />)}
+    </ul>
+  </div>
+
+  <div
+    id="resizer"
+    class="hidden md:block w-1.5 h-full bg-transparent hover:bg-blue-500/50 cursor-col-resize transition-colors z-30 flex-shrink-0 relative group"
+  >
+    <div class="absolute inset-y-0 -left-0.5 -right-0.5"></div>
+  </div>
+
+  <div
+    id="preview-panel"
+    class="absolute md:relative top-0 right-0 z-20 md:z-0 w-full md:flex-1 h-full bg-gray-50 dark:bg-[#222222] p-6 flex flex-col items-center justify-center text-center transform translate-x-full md:translate-x-0 transition-transform md:transition-none duration-300 shadow-2xl md:shadow-none overflow-hidden"
+  >
+    <button
+      id="close-preview-btn"
+      class="absolute top-2 right-2 md:hidden p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-white/10 rounded-md transition-colors"
+      aria-label="Cerrar vista previa"
+    >
+      <svg class="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"
+        ></path>
+      </svg>
+    </button>
+
+    <div
+      id="preview-default"
+      class="flex flex-col items-center text-gray-400 dark:text-gray-500"
+    >
+      <svg
+        class="size-16 mb-4 opacity-50"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+      >
+        <path
+          d="M4 0h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"
+        ></path>
+        <path d="M4.5 3h7v1h-7V3zm0 3h7v1h-7V6zm0 3h7v1h-7V9zm0 3h4v1h-4v-1z"
+        ></path>
+      </svg>
+      <span class="text-sm">Selecciona un archivo para ver la vista previa.</span>
+    </div>
+
+    <div
+      id="preview-content"
+      class="hidden flex-col items-center w-full h-full justify-between overflow-y-auto custom-scrollbar"
+    >
+      <div class="flex flex-col items-center w-full mt-4 md:mt-0">
+        <div
+          class="w-full h-40 md:h-48 mb-4 rounded-lg overflow-hidden border border-gray-300 dark:border-white/10 bg-gray-100 dark:bg-[#1a1a1a] shadow-inner flex items-center justify-center relative group flex-shrink-0"
+        >
+          <img
+            id="preview-img"
+            src=""
+            alt="Vista Previa"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+
+        <h3
+          id="preview-title"
+          class="text-lg font-bold text-gray-900 dark:text-white mb-2 leading-tight"
+        >
+        </h3>
+
+        <p
+          id="preview-desc"
+          class="text-xs text-gray-600 dark:text-gray-300 mb-4 text-pretty"
+        >
+        </p>
+
+        <div
+          class="w-full text-left bg-white dark:bg-[#191919] p-3 rounded border border-gray-200 dark:border-white/5"
+        >
+          <span
+            class="text-[11px] uppercase tracking-wider font-semibold text-gray-500 dark:text-gray-400 block mb-1"
+            >Tecnologías</span
+          >
+          <p
+            id="preview-tech"
+            class="text-xs text-blue-600 dark:text-blue-400 font-medium"
+          >
+          </p>
+        </div>
+      </div>
+
+      <a
+        id="preview-link"
+        href="#"
+        target="_blank"
+        class="mt-4 px-4 py-2 bg-[#00A4EF] hover:bg-[#0078D4] text-white text-sm font-medium rounded transition-colors w-full text-center shadow-md flex items-center justify-center gap-2 flex-shrink-0"
+      >
+        Abrir Proyecto
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const fileItems = document.querySelectorAll(".file-item") as NodeListOf<HTMLElement>;
+  const previewPanel = document.getElementById("preview-panel") as HTMLElement;
+  const closePreviewBtn = document.getElementById("close-preview-btn") as HTMLButtonElement;
+
+  const defaultPane = document.getElementById("preview-default") as HTMLElement;
+  const contentPane = document.getElementById("preview-content") as HTMLElement;
+
+  const previewImg = document.getElementById("preview-img") as HTMLImageElement;
+  const previewTitle = document.getElementById("preview-title") as HTMLElement;
+  const previewDesc = document.getElementById("preview-desc") as HTMLElement;
+  const previewTech = document.getElementById("preview-tech") as HTMLElement;
+  const previewLink = document.getElementById("preview-link") as HTMLAnchorElement;
+
+  fileItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      fileItems.forEach((f) => f.classList.remove("bg-blue-100", "dark:bg-white/10"));
+      item.classList.add("bg-blue-100", "dark:bg-white/10");
+
+      previewImg.src = item.dataset.img || "";
+      previewTitle.textContent = item.dataset.title || "";
+      previewDesc.textContent = item.dataset.desc || "";
+      previewTech.textContent = item.dataset.tech || "";
+      previewLink.href = item.dataset.link || "#";
+
+      defaultPane.classList.add("hidden");
+      contentPane.classList.remove("hidden");
+      contentPane.classList.add("flex");
+
+      previewPanel.classList.remove("translate-x-full");
+    });
+  });
+
+  if (closePreviewBtn) {
+    closePreviewBtn.addEventListener("click", () => {
+      previewPanel.classList.add("translate-x-full");
+      fileItems.forEach((f) => f.classList.remove("bg-blue-100", "dark:bg-white/10"));
+    });
+  }
+
+  const container = document.getElementById("projects-container") as HTMLElement;
+  const leftPanel = document.getElementById("left-panel") as HTMLElement;
+  const resizer = document.getElementById("resizer") as HTMLElement;
+
+  let isResizing = false;
+
+  resizer?.addEventListener("mousedown", (e) => {
+    isResizing = true;
+    document.body.style.cursor = "col-resize";
+    e.preventDefault();
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!isResizing || !container || !leftPanel) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const newWidth = e.clientX - containerRect.left;
+
+    const minWidth = containerRect.width * 0.3;
+    const maxWidth = containerRect.width * 0.8;
+
+    if (newWidth > minWidth && newWidth < maxWidth) {
+      const percentage = (newWidth / containerRect.width) * 100;
+      leftPanel.style.width = `${percentage}%`;
+    }
+  });
+
+  window.addEventListener("mouseup", () => {
+    if (isResizing) {
+      isResizing = false;
+      document.body.style.cursor = "default";
+    }
+  });
+</script>

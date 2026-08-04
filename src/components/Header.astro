@@ -1,9 +1,321 @@
-<header class="flex justify-center items-center py-5 w-full xl:w-[1120px] mx-auto">
-  <nav class="flex flex-row gap-x-10 opacity-80">
-    <a href="#top">Inicio</a>
-    <a href="#about">Sobre mí</a>
-    <a href="#experience">Experiencia Laboral</a>
-    <a href="#projects">Proyectos</a>
-    <a href="#contact">Contacto</a>
-  </nav>
+---
+// WindowsExplorerHeader.astro
+---
+
+<header class="win11-header">
+  <div class="title-bar">
+    <div class="tabs-area">
+      <div class="tab active">
+        <svg
+          class="icon"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          width="16"
+          height="16"
+        >
+          <path
+            d="M1 3.5A1.5 1.5 0 0 1 2.5 2h11A1.5 1.5 0 0 1 15 3.5v7A1.5 1.5 0 0 1 13.5 12H11v1h1.5a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1H5v-1H2.5A1.5 1.5 0 0 1 1 10.5v-7zm1.5-.5a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-11z"
+          ></path>
+        </svg>
+        <span class="tab-title">Bienvenido a mi portafolio</span>
+      </div>
+      <button class="add-tab-btn" title="Add new tab">
+        <svg viewBox="0 0 16 16" fill="currentColor" width="16" height="16">
+          <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="window-controls">
+      <button class="ctrl-btn minimize" title="Minimize">
+        <svg viewBox="0 0 10.2 1" width="10" height="1"
+          ><rect width="10.2" height="1" fill="currentColor"></rect></svg
+        >
+      </button>
+      <button class="ctrl-btn maximize" title="Maximize">
+        <svg viewBox="0 0 10 10" width="10" height="10"
+          ><path d="M0,0v10h10V0H0z M9,9H1V1h8V9z" fill="currentColor"
+          ></path></svg
+        >
+      </button>
+      <button class="ctrl-btn close" title="Close">
+        <svg viewBox="0 0 10 10" width="10" height="10"
+          ><path
+            d="M10.2,1.1l-1.1-1.1L5.1,4L1.1,0L0,1.1l4,4l-4,4l1.1,1.1l4-4l4,4l1.1-1.1l-4-4L10.2,1.1z"
+            fill="currentColor"></path></svg
+        >
+      </button>
+    </div>
+  </div>
+
+  <div class="nav-bar">
+    <div class="nav-arrows">
+      <button class="nav-btn" title="Back" disabled>←</button>
+      <button class="nav-btn" title="Forward" disabled>→</button>
+      <button class="nav-btn" title="Up to desktop">↑</button>
+      <button class="nav-btn" title="Refresh">↻</button>
+    </div>
+
+    <div class="address-bar">
+      <div class="address-content">
+        <svg
+          class="icon"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          width="14"
+          height="14"
+        >
+          <path
+            d="M1 3.5A1.5 1.5 0 0 1 2.5 2h11A1.5 1.5 0 0 1 15 3.5v7A1.5 1.5 0 0 1 13.5 12H11v1h1.5a.5.5 0 0 1 0 1h-9a.5.5 0 0 1 0-1H5v-1H2.5A1.5 1.5 0 0 1 1 10.5v-7zm1.5-.5a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.5-.5h-11z"
+          ></path>
+        </svg>
+        <span class="separator">›</span>
+        <button class="breadcrumb">Documents</button>
+        <span class="separator">›</span>
+        <button class="breadcrumb">Portfolio</button>
+      </div>
+    </div>
+
+    <div class="search-bar">
+      <svg
+        class="search-icon"
+        viewBox="0 0 16 16"
+        fill="currentColor"
+        width="12"
+        height="12"
+      >
+        <path
+          d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+        ></path>
+      </svg>
+      <input type="text" placeholder="Search This PC" />
+    </div>
+  </div>
 </header>
+
+<style>
+  .win11-header {
+    --mica-bg: rgba(32, 32, 32, 0.7);
+    --hover-bg: rgba(255, 255, 255, 0.06);
+    --active-tab-bg: rgba(45, 45, 45, 0.9);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+
+    font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+    background: var(--mica-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+    user-select: none;
+    overflow: hidden;
+  }
+
+  svg {
+    display: block;
+  }
+
+  
+  .title-bar {
+    display: flex;
+    justify-content: space-between;
+    height: 42px;
+  }
+
+  .tabs-area {
+    display: flex;
+    align-items: flex-end;
+    padding-left: 8px;
+    gap: 4px;
+    flex-grow: 1;
+  }
+
+  .tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--active-tab-bg);
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    padding: 0 12px;
+    height: 34px;
+    min-width: 160px;
+    font-size: 12px;
+    cursor: default;
+    position: relative;
+  }
+
+  .tab-title {
+    font-size: 12px;
+  }
+
+  .add-tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    border-radius: 4px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 4px;
+  }
+
+  .add-tab-btn:hover {
+    background: var(--hover-bg);
+  }
+
+  
+  .window-controls {
+    display: flex;
+  }
+
+  .ctrl-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    width: 46px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+
+  .ctrl-btn:hover {
+    background: var(--hover-bg);
+  }
+
+  .ctrl-btn.close:hover {
+    background: #e81123;
+    color: white;
+  }
+
+  
+  .nav-bar {
+    display: flex;
+    align-items: center;
+    height: 54px;
+    padding: 0 12px;
+    gap: 12px;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.2); 
+  }
+
+  .nav-arrows {
+    display: flex;
+    gap: 2px;
+  }
+
+  .nav-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    border-radius: 4px;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .nav-btn:hover:not(:disabled) {
+    background: var(--hover-bg);
+  }
+
+  .nav-btn:disabled {
+    color: rgba(255, 255, 255, 0.3);
+    cursor: not-allowed;
+  }
+
+  
+  .address-bar {
+    flex-grow: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+  }
+
+  .address-bar:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .address-content {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .separator {
+    color: var(--text-secondary);
+    font-size: 12px;
+    margin: 0 2px;
+  }
+
+  .breadcrumb {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    font-size: 13px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .breadcrumb:hover {
+    background: var(--hover-bg);
+  }
+
+  
+  .search-bar {
+    width: 240px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 8px;
+  }
+
+  .search-bar:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .search-bar input {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    outline: none;
+    font-size: 13px;
+    width: 100%;
+    font-family: inherit;
+  }
+
+  .search-bar input::placeholder {
+    color: var(--text-secondary);
+  }
+
+  .search-icon {
+    color: var(--text-secondary);
+  }
+</style>

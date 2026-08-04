@@ -1,6 +1,8 @@
 ---
+// src/layouts/Layout.astro
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import Taskbar from "../components/WTaskbar.astro";
 import "../styles/global.css";
 import "@fontsource-variable/onest/wght.css";
 
@@ -8,29 +10,86 @@ interface Props {
   title: string;
   description: string;
 }
+
 const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:;"
+    />
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="theme-color"
+      content="#050505"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta name="robots" content="index, follow" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-
     <title>{title}</title>
+
+    <script is:inline>
+      function applyTheme() {
+        const storedTheme = localStorage.getItem("color-theme") || "system";
+        const systemPrefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        if (
+          storedTheme === "dark" ||
+          (storedTheme === "system" && systemPrefersDark)
+        ) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+        }
+      }
+      applyTheme();
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", () => {
+          const storedTheme = localStorage.getItem("color-theme") || "system";
+          if (storedTheme === "system") applyTheme();
+        });
+    </script>
   </head>
-  <body>
+
+  <body
+    class="h-[100dvh] w-screen overflow-hidden flex flex-col bg-slate-100 dark:bg-[#050505] text-gray-900 dark:text-white relative transition-colors duration-300"
+  >
     <div
-      class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"
+      class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#fff_40%,#63e2_100%)] dark:[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)] transition-colors duration-300"
     >
     </div>
-    <Header />
-    <slot />
-    <Footer/>
+
+    <div class="shrink-0 z-50">
+      <Header />
+    </div>
+
+    <div
+      class="flex-1 min-h-0 w-full overflow-hidden flex flex-col relative z-10"
+    >
+      <slot />
+    </div>
+
+    <div class="shrink-0 z-50 relative w-full">
+      <Footer />
+    </div>
+
+    <div class="shrink-0 z-50 relative w-full">
+      <Taskbar />
+    </div>
   </body>
 </html>
 
@@ -38,16 +97,15 @@ const { title, description } = Astro.props;
   :root {
     color-scheme: light dark;
   }
-  html {
-    font-family: "Onest Variable", system-ui, sans-serif;
-    scroll-behavior: smooth;
-  }
-
+  html,
   body {
-    background: #050505;
+    font-family: "Onest Variable", system-ui, sans-serif;
+    height: 100%;
+    overflow: hidden;
+  }
+  body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
   }
   @media (prefers-reduced-motion: reduce) {
     html {

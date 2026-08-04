@@ -1,0 +1,431 @@
+---
+// src/components/Technologies.astro
+import TechnologiesItem from "./TechnologiesItem.astro";
+import PythonIcon from "./icons/PythonIcon.astro";
+import ReactIcon from "./icons/ReactIcon.astro";
+import JavaIcon from "./icons/JavaIcon.astro";
+import AstroIcon from "./icons/AstroIcon.astro";
+import TailwindIcon from "./icons/TailwindIcon.astro";
+import PostgresqlIcon from "./icons/PostgresqlIcon.astro";
+import AzureIcon from "./icons/AzureIcon.astro";
+import DockerIcon from "./icons/DockerIcon.astro";
+import GearIcon from "./icons/GearIcon.astro";
+import CategoryIcon from "./icons/CategoriesIcon.astro";
+import BackendIcon from "./icons/BackendIcon.astro";
+import FrontendIcon from "./icons/FrontendIcon.astro";
+import DatabaseIcon from "./icons/DatabaseIcon.astro";
+import CloudIcon from "./icons/CloudIcon.astro";
+import MySqlIcon from "./icons/MySQLIcon.astro";
+import NodeIcon from "./icons/NodeJsIcon.astro";
+import AngularIcon from "./icons/AngularIcon.astro";
+import FlutterIcon from "./icons/FlutterIcon.astro";
+import ATomcatIcon from "./icons/ATomcatIcon.astro";
+
+const TECHNOLOGIES = [
+  {
+    name: "C# / .NET",
+    category: "backend",
+    description: "Desarrollo de APIs, Microservicios y lógica empresarial.",
+    icon: GearIcon,
+  },
+  {
+    name: "Python",
+    category: "backend",
+    description: "Flask, Desarrollo de APIs REST & App Services.",
+    icon: PythonIcon,
+  },
+  {
+    name: "Node.js",
+    category: "backend",
+    description: "Desarrollo asíncrono y backend escalable con JS/TS.",
+    icon: NodeIcon,
+  },
+  {
+    name: "Java",
+    category: "backend",
+    description: "Spring Boot, JavaFX, Arquitectura Orientada a Objetos.",
+    icon: JavaIcon,
+  },
+  {
+    name: "TypeScript / JS",
+    category: "backend",
+    description: "Tipado estricto y desarrollo Full-Stack.",
+    icon: GearIcon,
+  },
+  {
+    name: "React",
+    category: "frontend",
+    description: "Componentes reutilizables, Hooks & Single Page Apps.",
+    icon: ReactIcon,
+  },
+  {
+    name: "Angular",
+    category: "frontend",
+    description: "Aplicaciones modulares y estructuradas a gran escala.",
+    icon: AngularIcon,
+  },
+  {
+    name: "Astro",
+    category: "frontend",
+    description: "Sitios estáticos ultra rápidos & Renderizado Híbrido.",
+    icon: AstroIcon,
+  },
+  {
+    name: "Flutter",
+    category: "frontend",
+    description: "Desarrollo de aplicaciones móviles multiplataforma.",
+    icon: FlutterIcon,
+  },
+  {
+    name: "Desarrollo Web",
+    category: "frontend",
+    description: "HTML5, CSS3, Tailwind CSS & diseño responsivo.",
+    icon: TailwindIcon,
+  },
+  {
+    name: "Microservicios",
+    category: "backend",
+    description: "Arquitecturas distribuidas y desacopladas.",
+    icon: BackendIcon,
+  },
+  {
+    name: "APIs REST / SOAP",
+    category: "backend",
+    description: "Diseño, consumo y documentación de servicios web.",
+    icon: CloudIcon,
+  },
+  {
+    name: "OAuth2 & JWT",
+    category: "backend",
+    description: "Protocolos de seguridad, autenticación y autorización.",
+    icon: GearIcon,
+  },
+  {
+    name: "Arquitectura POS",
+    category: "backend",
+    description: "Sistemas de Punto de Venta y transacciones.",
+    icon: DatabaseIcon,
+  },
+  {
+    name: "Oracle",
+    category: "database",
+    description: "Bases de datos empresariales de alto rendimiento.",
+    icon: DatabaseIcon,
+  },
+  {
+    name: "PostgreSQL",
+    category: "database",
+    description: "Diseño de esquemas, Consultas complejas & Optimización.",
+    icon: PostgresqlIcon,
+  },
+  {
+    name: "MySQL",
+    category: "database",
+    description: "Bases de datos relacionales tradicionales.",
+    icon: MySqlIcon,
+  },
+  {
+    name: "Stored Procs & SQL",
+    category: "database",
+    description: "Creación de procedimientos y optimización de consultas.",
+    icon: GearIcon,
+  },
+  {
+    name: "Azure",
+    category: "cloud",
+    description: "App Services, Functions & Static Web Apps.",
+    icon: AzureIcon,
+  },
+  {
+    name: "Docker",
+    category: "cloud",
+    description: "Contenedores & Ambientes de desarrollo aislados.",
+    icon: DockerIcon,
+  },
+  {
+    name: "Pipelines CI/CD",
+    category: "cloud",
+    description: "Integración y despliegue continuo automatizado.",
+    icon: CloudIcon,
+  },
+  {
+    name: "Git / Control de versiones",
+    category: "cloud",
+    description: "Gestión de código, ramas y colaboración en equipo.",
+    icon: GearIcon,
+  },
+  {
+    name: "Apache Tomcat",
+    category: "cloud",
+    description: "Servidor web y contenedor de servlets Java.",
+    icon: ATomcatIcon,
+  },
+];
+---
+
+<div
+  class="flex flex-col w-full border border-gray-300 dark:border-white/10 rounded-lg overflow-hidden bg-white dark:bg-[#1f1f1f] shadow-lg h-[500px]"
+>
+  <div
+    class="flex items-center justify-between px-4 py-2.5 bg-gray-100 dark:bg-[#202020] border-b border-gray-300 dark:border-white/10 select-none z-10 shrink-0"
+  >
+    <div class="flex items-center gap-2">
+      <button
+        id="sidebar-toggle"
+        class="p-1 rounded hover:bg-gray-200 dark:hover:bg-white/10 transition-colors hidden md:block"
+        aria-label="Alternar menú lateral"
+        aria-expanded="true"
+      >
+        <svg
+          class="w-4 h-4 text-gray-700 dark:text-gray-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <div
+        class="flex items-center gap-2 text-gray-700 dark:text-gray-300 text-xs font-medium"
+      >
+        <GearIcon class="size-4 text-blue-500" />
+        <span>Tecnologías y Habilidades</span>
+      </div>
+    </div>
+
+    <div class="flex gap-4 items-center">
+      <span
+        class="text-gray-400 hover:text-gray-700 dark:hover:text-white cursor-pointer text-xs"
+        >─</span
+      >
+      <span
+        class="text-gray-400 hover:text-gray-700 dark:hover:text-white cursor-pointer text-xs"
+        >☐</span
+      >
+      <span
+        class="text-gray-400 hover:text-red-500 cursor-pointer transition-colors text-xs"
+        >✕</span
+      >
+    </div>
+  </div>
+
+  <div class="flex flex-1 relative overflow-hidden">
+    <nav
+      id="sidebar"
+      class="w-full md:w-56 h-full overflow-y-auto custom-scrollbar bg-gray-50 dark:bg-[#18181f] p-3 border-r border-gray-200 dark:border-white/10 flex flex-col gap-1 select-none shrink-0"
+    >
+      <span
+        class="text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider px-3 py-1.5 mt-2 md:mt-0"
+      >
+        Categorías
+      </span>
+
+      <button
+        data-target="all"
+        class="cat-btn flex items-center gap-2.5 px-3 py-3 md:py-2 rounded-md text-sm md:text-xs font-medium text-gray-700 dark:text-gray-200 bg-gray-200/80 dark:bg-white/10 transition-colors w-full text-left"
+      >
+        <CategoryIcon class="size-5 md:size-4" /> Todas las tecnologías
+      </button>
+
+      <button
+        data-target="backend"
+        class="cat-btn flex items-center gap-2.5 px-3 py-3 md:py-2 rounded-md text-sm md:text-xs font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-white/5 transition-colors w-full text-left"
+      >
+        <BackendIcon class="size-5 md:size-4" /> Backend & APIs
+      </button>
+
+      <button
+        data-target="frontend"
+        class="cat-btn flex items-center gap-2.5 px-3 py-3 md:py-2 rounded-md text-sm md:text-xs font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-white/5 transition-colors w-full text-left"
+      >
+        <FrontendIcon class="size-5 md:size-4" /> Frontend & Web
+      </button>
+
+      <button
+        data-target="database"
+        class="cat-btn flex items-center gap-2.5 px-3 py-3 md:py-2 rounded-md text-sm md:text-xs font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-white/5 transition-colors w-full text-left"
+      >
+        <DatabaseIcon class="size-5 md:size-4" /> Bases de Datos
+      </button>
+
+      <button
+        data-target="cloud"
+        class="cat-btn flex items-center gap-2.5 px-3 py-3 md:py-2 rounded-md text-sm md:text-xs font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-200/50 dark:hover:bg-white/5 transition-colors w-full text-left"
+      >
+        <CloudIcon class="size-5 md:size-4" /> Cloud & DevOps
+      </button>
+    </nav>
+
+    <div
+      id="grid-panel"
+      class="absolute inset-0 md:relative md:inset-auto z-40 md:z-0 w-full md:flex-1 h-full bg-white dark:bg-[#1a1a1a] flex flex-col transform translate-x-full md:translate-x-0 transition-transform duration-300"
+    >
+      <div
+        class="px-5 py-4 border-b border-gray-200 dark:border-white/10 md:border-transparent flex items-start justify-between shrink-0 bg-white dark:bg-[#1a1a1a] z-10"
+      >
+        <div>
+          <h3
+            id="category-title"
+            class="text-xl md:text-lg font-bold text-gray-900 dark:text-white"
+          >
+            Todas las tecnologías
+          </h3>
+          <p
+            class="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-1 md:mt-0"
+          >
+            Herramientas y lenguajes que utilizo.
+          </p>
+        </div>
+
+        <button
+          id="close-grid-btn"
+          class="md:hidden p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/10 rounded-md transition-colors"
+          aria-label="Cerrar vista"
+        >
+          <svg
+            class="size-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path></svg
+          >
+        </button>
+      </div>
+
+      <div class="flex-1 p-5 overflow-y-auto custom-scrollbar">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
+          id="tech-grid"
+        >
+          {TECHNOLOGIES.map((tech) => <TechnologiesItem {...tech} />)}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const catButtons = document.querySelectorAll(
+    ".cat-btn",
+  ) as NodeListOf<HTMLButtonElement>;
+  const techItems = document.querySelectorAll(
+    ".tech-item",
+  ) as NodeListOf<HTMLElement>;
+  const categoryTitle = document.getElementById(
+    "category-title",
+  ) as HTMLElement;
+
+  const gridPanel = document.getElementById("grid-panel") as HTMLElement;
+  const closeGridBtn = document.getElementById(
+    "close-grid-btn",
+  ) as HTMLButtonElement;
+
+  catButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.target;
+
+      catButtons.forEach((b) => {
+        b.classList.remove(
+          "bg-gray-200/80",
+          "dark:bg-white/10",
+          "text-gray-700",
+          "dark:text-gray-200",
+        );
+        b.classList.add("text-gray-600", "dark:text-gray-400");
+      });
+      btn.classList.add(
+        "bg-gray-200/80",
+        "dark:bg-white/10",
+        "text-gray-700",
+        "dark:text-gray-200",
+      );
+
+      if (categoryTitle) {
+        categoryTitle.textContent = btn.innerText.trim();
+      }
+
+      techItems.forEach((item) => {
+        const itemCat = item.dataset.category;
+        if (target === "all" || itemCat === target) {
+          item.classList.remove("hidden");
+          item.classList.add("flex");
+        } else {
+          item.classList.add("hidden");
+          item.classList.remove("flex");
+        }
+      });
+
+      if (gridPanel) {
+        gridPanel.classList.remove("translate-x-full");
+      }
+    });
+  });
+
+  if (closeGridBtn && gridPanel) {
+    closeGridBtn.addEventListener("click", () => {
+      gridPanel.classList.add("translate-x-full");
+    });
+  }
+
+  const sidebarToggle = document.getElementById(
+    "sidebar-toggle",
+  ) as HTMLButtonElement;
+  const sidebar = document.getElementById("sidebar") as HTMLElement;
+
+  if (sidebarToggle && sidebar) {
+    sidebarToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("sidebar-hidden");
+      const isHidden = sidebar.classList.contains("sidebar-hidden");
+      sidebarToggle.setAttribute("aria-expanded", String(!isHidden));
+    });
+  }
+</script>
+
+<style>
+  .sidebar-hidden {
+    width: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden;
+    padding: 0 !important;
+    border-width: 0 !important;
+    margin: 0 !important;
+    flex: none !important;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.4);
+    border-radius: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(156, 163, 175, 0.7);
+  }
+
+  /* Adaptación automática para el Modo Oscuro */
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  :global(.dark) .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+</style>
