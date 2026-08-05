@@ -29,6 +29,12 @@ This is a practice project created specifically to learn, master the basics, and
 
 ---
 
+## Screenshots
+
+![Main dashboard view](assets/mainportfolio.png)
+
+---
+
 ## Project Structure
 
 Inside this Astro project, the directory structure is organized into modular components:
