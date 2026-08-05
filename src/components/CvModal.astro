@@ -1,24 +1,24 @@
 ---
 // src/components/CvModal.astro
 const base = import.meta.env.BASE_URL || "/";
-const cvPath = `${base}cv.pdf`; // Ruta directa a la raíz de public
+const cvPath = `${base}cv.pdf`; 
 const downloadName = "CV_Jose_Fabian_Salcedo.pdf";
 ---
 
 <div
   id="cv-modal"
-  class="fixed inset-0 z-50 flex items-center justify-center p-4 pt-16 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
+  class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 pt-20 sm:pt-16 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
 >
   <div
-    class="relative w-full max-w-4xl h-[80vh] bg-white dark:bg-[#1e1e1e] border border-gray-300 dark:border-white/10 rounded-xl shadow-2xl flex flex-col overflow-hidden transform scale-95 transition-transform duration-300"
+    class="relative w-full max-w-4xl h-[85vh] sm:h-[80vh] bg-white dark:bg-[#1e1e1e] border border-gray-300 dark:border-white/10 rounded-xl shadow-2xl flex flex-col overflow-hidden transform scale-95 transition-transform duration-300"
     id="cv-modal-window"
   >
     <div
-      class="flex items-center justify-between px-4 py-3 bg-gray-100 dark:bg-[#252525] border-b border-gray-200 dark:border-white/10 select-none shrink-0"
+      class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-0 px-3 sm:px-4 py-3 bg-gray-100 dark:bg-[#252525] border-b border-gray-200 dark:border-white/10 select-none shrink-0"
     >
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 overflow-hidden w-full sm:w-auto">
         <svg
-          class="size-4 text-purple-500"
+          class="size-4 text-purple-500 shrink-0"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -30,16 +30,19 @@ const downloadName = "CV_Jose_Fabian_Salcedo.pdf";
             d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
           ></path>
         </svg>
-        <span class="text-xs font-semibold text-gray-700 dark:text-gray-200"
-          >CV_Jose_Fabian.pdf</span
+        <span
+          class="text-xs font-semibold text-gray-700 dark:text-gray-200 truncate"
+          >CV_JOSE_FABIAN.pdf</span
         >
       </div>
 
-      <div class="flex items-center gap-2">
+      <div
+        class="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto"
+      >
         <a
           href={cvPath}
           download={downloadName}
-          class="px-3 py-1 text-xs font-medium text-white bg-purple-600 hover:bg-purple-700 rounded transition-colors flex items-center gap-1.5 shadow-sm"
+          class="px-3 py-1.5 text-xs font-medium text-white bg-purple-600 hover:bg-purple-700 rounded transition-colors flex items-center justify-center gap-1.5 shadow-sm flex-1 sm:flex-initial"
         >
           <svg
             class="size-3.5"
@@ -59,11 +62,11 @@ const downloadName = "CV_Jose_Fabian_Salcedo.pdf";
 
         <button
           id="close-cv-modal"
-          class="p-1.5 text-gray-400 hover:text-red-500 hover:bg-gray-200 dark:hover:bg-white/10 rounded transition-colors"
+          class="p-1.5 text-gray-400 hover:text-red-500 hover:bg-gray-200 dark:hover:bg-white/10 rounded transition-colors shrink-0"
           aria-label="Cerrar modal"
         >
           <svg
-            class="size-4"
+            class="size-5 sm:size-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -79,10 +82,10 @@ const downloadName = "CV_Jose_Fabian_Salcedo.pdf";
     </div>
 
     <div
-      class="flex-1 w-full bg-gray-100 dark:bg-[#141414] relative overflow-hidden"
+      class="flex-1 w-full bg-gray-100 dark:bg-[#141414] relative overflow-hidden flex flex-col"
     >
       <iframe
-        src={`${cvPath}#toolbar=0`}
+        src={`${cvPath}#toolbar=0&view=FitH`}
         class="w-full h-full border-none"
         title="Vista previa del CV"></iframe>
     </div>

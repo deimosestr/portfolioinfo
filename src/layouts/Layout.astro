@@ -36,7 +36,7 @@ const baseUrl = import.meta.env.BASE_URL;
     />
     <meta name="robots" content="index, follow" />
 
-    <!-- Google Fonts CDN para evitar errores de compilación con Fontsource -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -44,9 +44,8 @@ const baseUrl = import.meta.env.BASE_URL;
       rel="stylesheet"
     />
 
-    <!-- Favicons usando BASE_URL -->
     <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
-    <link rel="icon" href={`${baseUrl}favicon.ico`} />
+    <link rel="icon" href={`${baseUrl}favicon.svg`} />
 
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
