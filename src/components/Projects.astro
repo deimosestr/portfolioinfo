@@ -2,6 +2,8 @@
 // src/components/Projects.astro
 import ProjectsItem from "./ProjectsItem.astro";
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const PROJECTS = [
   {
     title: "Landing Page - Personalizados Dib",
@@ -9,7 +11,7 @@ const PROJECTS = [
     type: "Aplicación Web",
     description:
       "Landing page para una emprendedora del rubro textil, diseñada para dar a conocer su marca y aumentar sus ventas. El frontend se desarrolló con React y el backend con Python, desplegando una API central en un App Service de Azure.",
-    image: "/src/components/photos/personalizados_dib_icon.jpg",
+    image: `${baseUrl}photos/personalizados_dib_icon.jpg`,
     technologies: ["React", "Python (Flask)", "Azure App Service"],
     link: "https://github.com/",
   },
@@ -19,7 +21,7 @@ const PROJECTS = [
     type: "App de Escritorio",
     description:
       "Aplicación de escritorio para el registro y gestión de bitácoras de seguridad industrial. Desarrollada en Java con JavaFX para la interfaz y PostgreSQL como motor de base de datos.",
-    image: "/src/components/photos/mobility_ado_icon.jpg",
+    image: `${baseUrl}photos/mobility_ado_icon.jpg`,
     technologies: ["Java", "JavaFX", "PostgreSQL"],
     link: "https://github.com/deimosestr/mobilityado",
   },
@@ -29,7 +31,7 @@ const PROJECTS = [
     type: "App Escritorio / Cloud",
     description:
       "Evolución del sistema ADO Mobility: se separó la lógica en un App Service independiente para mejorar la escalabilidad y el mantenimiento. Se implementó en Google Cloud.",
-    image: "/src/components/photos/mobility_ado_icon.jpg",
+    image: `${baseUrl}photos/mobility_ado_icon.jpg`,
     technologies: ["Java", "Spring Boot", "Google Cloud", "PostgreSQL"],
     link: "https://github.com/deimosestr/mobilityado",
   },
@@ -78,8 +80,7 @@ const PROJECTS = [
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M6 18L18 6M6 6l12 12"
-        ></path>
+          d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </button>
 
@@ -98,7 +99,9 @@ const PROJECTS = [
         <path d="M4.5 3h7v1h-7V3zm0 3h7v1h-7V6zm0 3h7v1h-7V9zm0 3h4v1h-4v-1z"
         ></path>
       </svg>
-      <span class="text-sm">Selecciona un archivo para ver la vista previa.</span>
+      <span class="text-sm"
+        >Selecciona un archivo para ver la vista previa.</span
+      >
     </div>
 
     <div
@@ -157,9 +160,13 @@ const PROJECTS = [
 </div>
 
 <script>
-  const fileItems = document.querySelectorAll(".file-item") as NodeListOf<HTMLElement>;
+  const fileItems = document.querySelectorAll(
+    ".file-item",
+  ) as NodeListOf<HTMLElement>;
   const previewPanel = document.getElementById("preview-panel") as HTMLElement;
-  const closePreviewBtn = document.getElementById("close-preview-btn") as HTMLButtonElement;
+  const closePreviewBtn = document.getElementById(
+    "close-preview-btn",
+  ) as HTMLButtonElement;
 
   const defaultPane = document.getElementById("preview-default") as HTMLElement;
   const contentPane = document.getElementById("preview-content") as HTMLElement;
@@ -168,11 +175,15 @@ const PROJECTS = [
   const previewTitle = document.getElementById("preview-title") as HTMLElement;
   const previewDesc = document.getElementById("preview-desc") as HTMLElement;
   const previewTech = document.getElementById("preview-tech") as HTMLElement;
-  const previewLink = document.getElementById("preview-link") as HTMLAnchorElement;
+  const previewLink = document.getElementById(
+    "preview-link",
+  ) as HTMLAnchorElement;
 
   fileItems.forEach((item) => {
     item.addEventListener("click", () => {
-      fileItems.forEach((f) => f.classList.remove("bg-blue-100", "dark:bg-white/10"));
+      fileItems.forEach((f) =>
+        f.classList.remove("bg-blue-100", "dark:bg-white/10"),
+      );
       item.classList.add("bg-blue-100", "dark:bg-white/10");
 
       previewImg.src = item.dataset.img || "";
@@ -192,11 +203,15 @@ const PROJECTS = [
   if (closePreviewBtn) {
     closePreviewBtn.addEventListener("click", () => {
       previewPanel.classList.add("translate-x-full");
-      fileItems.forEach((f) => f.classList.remove("bg-blue-100", "dark:bg-white/10"));
+      fileItems.forEach((f) =>
+        f.classList.remove("bg-blue-100", "dark:bg-white/10"),
+      );
     });
   }
 
-  const container = document.getElementById("projects-container") as HTMLElement;
+  const container = document.getElementById(
+    "projects-container",
+  ) as HTMLElement;
   const leftPanel = document.getElementById("left-panel") as HTMLElement;
   const resizer = document.getElementById("resizer") as HTMLElement;
 
