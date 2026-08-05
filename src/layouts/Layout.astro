@@ -24,8 +24,19 @@ const baseUrl = import.meta.env.BASE_URL;
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="theme-color"
+      content="#050505"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
     <meta name="robots" content="index, follow" />
 
+    <!-- Google Fonts CDN para evitar errores de compilación con Fontsource -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -33,6 +44,7 @@ const baseUrl = import.meta.env.BASE_URL;
       rel="stylesheet"
     />
 
+    <!-- Favicons usando BASE_URL -->
     <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
     <link rel="icon" href={`${baseUrl}favicon.ico`} />
 
@@ -55,6 +67,12 @@ const baseUrl = import.meta.env.BASE_URL;
         }
       }
       applyTheme();
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", () => {
+          const storedTheme = localStorage.getItem("color-theme") || "system";
+          if (storedTheme === "system") applyTheme();
+        });
     </script>
   </head>
 

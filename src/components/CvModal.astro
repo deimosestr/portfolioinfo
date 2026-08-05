@@ -1,21 +1,47 @@
 ---
 // src/components/CvModal.astro
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
-<div
+<dialog
   id="cv-modal"
-  class="fixed inset-0 z-50 flex items-center justify-center p-4 pt-16 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"
+  class="backdrop:bg-black/70 bg-transparent p-0 rounded-xl shadow-2xl max-w-4xl w-[90%] h-[85vh] open:flex flex-col"
 >
   <div
-    class="relative w-full max-w-3xl h-[82vh] bg-white dark:bg-[#1e1e1e] border border-gray-300 dark:border-white/10 rounded-xl shadow-2xl flex flex-col overflow-hidden transform scale-95 transition-transform duration-300"
-    id="cv-modal-window"
+    class="bg-[#202020] text-white px-4 py-3 flex items-center justify-between border-b border-white/10 select-none"
   >
-    <div
-      class="flex items-center justify-between px-4 py-3 bg-gray-100 dark:bg-[#252525] border-b border-gray-200 dark:border-white/10 select-none shrink-0"
-    >
-      <div class="flex items-center gap-2">
+    <div class="flex items-center gap-2">
+      <svg
+        class="size-5 text-purple-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+        ></path>
+      </svg>
+      <span class="text-sm font-medium"
+        >Currículum Vitae - José Fabián Salcedo Estrada</span
+      >
+    </div>
+    <div class="flex items-center gap-2">
+      <a
+        href={`${baseUrl}cv.pdf`}
+        download
+        class="px-3 py-1 bg-blue-600 hover:bg-blue-500 text-white text-xs rounded transition-colors flex items-center gap-1.5"
+      >
+        Descargar
+      </a>
+      <button
+        id="close-cv-modal"
+        class="p-1 hover:bg-white/10 rounded transition-colors"
+      >
         <svg
-          class="size-4 text-purple-500"
+          class="size-5"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -24,192 +50,44 @@
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-          ></path>
+            d="M6 18L18 6M6 6l12 12"></path>
         </svg>
-        <span class="text-xs font-semibold text-gray-700 dark:text-gray-200"
-          >CV_SALCEDO_ESTRADA.pdf</span
-        >
-      </div>
-
-      <div class="flex items-center gap-2">
-        <a
-          href="${import.meta.env.BASE_URL}cv.pdf"
-          download="CV_Jose_Fabian_Salcedo.pdf"
-          class="px-3 py-1 text-xs font-medium text-white bg-purple-600 hover:bg-purple-700 rounded transition-colors flex items-center gap-1.5 shadow-sm"
-        >
-          <svg
-            class="size-3.5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-            ></path>
-          </svg>
-          Descargar
-        </a>
-
-        <button
-          id="close-cv-modal"
-          class="p-1.5 text-gray-400 hover:text-red-500 hover:bg-gray-200 dark:hover:bg-white/10 rounded transition-colors"
-          aria-label="Cerrar modal"
-        >
-          <svg
-            class="size-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <div
-      class="flex-1 w-full bg-gray-200 dark:bg-[#141414] relative overflow-hidden flex items-center justify-center"
-    >
-      <div
-        class="absolute bottom-4 right-4 z-20 flex items-center gap-1 bg-white/80 dark:bg-[#252525]/85 backdrop-blur-md border border-gray-300 dark:border-white/10 p-1.5 rounded-lg shadow-lg"
-      >
-        <button
-          id="zoom-out"
-          class="p-1.5 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-white/10 rounded transition-colors"
-          title="Alejar Zoom"
-        >
-          <svg
-            class="size-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M20 12H4"></path>
-          </svg>
-        </button>
-        <span
-          id="zoom-level"
-          class="text-xs font-medium text-gray-700 dark:text-gray-300 px-2 min-w-[45px] text-center"
-          >100%</span
-        >
-        <button
-          id="zoom-in"
-          class="p-1.5 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-white/10 rounded transition-colors"
-          title="Acercar Zoom"
-        >
-          <svg
-            class="size-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M12 4v16m8-8H4"></path>
-          </svg>
-        </button>
-      </div>
-
-      <div
-        id="iframe-wrapper"
-        class="w-full h-full flex items-center justify-center transition-transform duration-200 origin-center"
-      >
-        <iframe
-          id="pdf-iframe"
-          src="/cv.pdf#view=FitH"
-          class="w-full h-full border-none"
-          title="Vista previa del CV"></iframe>
-      </div>
+      </button>
     </div>
   </div>
-</div>
+  <div class="flex-1 bg-[#141414] w-full h-full p-2">
+    <iframe
+      src={`${baseUrl}cv.pdf`}
+      class="w-full h-full rounded border border-white/10"
+      title="CV PDF Viewer"></iframe>
+  </div>
+</dialog>
 
 <script>
-  const modal = document.getElementById("cv-modal");
-  const modalWindow = document.getElementById("cv-modal-window");
+  const modal = document.getElementById("cv-modal") as HTMLDialogElement;
+  const openBtns = document.querySelectorAll(".open-cv-modal");
   const closeBtn = document.getElementById("close-cv-modal");
-  const openTriggers = document.querySelectorAll(".open-cv-modal");
 
-  const zoomInBtn = document.getElementById("zoom-in");
-  const zoomOutBtn = document.getElementById("zoom-out");
-  const zoomLevelText = document.getElementById("zoom-level");
-  const iframeWrapper = document.getElementById("iframe-wrapper");
-
-  let currentScale = 1;
-
-  function updateZoom() {
-    if (iframeWrapper && zoomLevelText) {
-      iframeWrapper.style.transform = `scale(${currentScale})`;
-      zoomLevelText.textContent = `${Math.round(currentScale * 100)}%`;
-    }
-  }
-
-  zoomInBtn?.addEventListener("click", () => {
-    if (currentScale < 2.0) {
-      currentScale += 0.15;
-      updateZoom();
-    }
+  openBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      modal?.showModal();
+    });
   });
 
-  zoomOutBtn?.addEventListener("click", () => {
-    if (currentScale > 0.7) {
-      currentScale -= 0.15;
-      updateZoom();
-    }
+  closeBtn?.addEventListener("click", () => {
+    modal?.close();
   });
-
-  function openModal(e: Event) {
-    e.preventDefault();
-    if (modal && modalWindow) {
-      modal.classList.remove("opacity-0", "pointer-events-none");
-      modal.classList.add("opacity-100");
-      modalWindow.classList.remove("scale-95");
-      modalWindow.classList.add("scale-100");
-      document.body.style.overflow = "hidden";
-      currentScale = 1;
-      updateZoom();
-    }
-  }
-
-  function closeModal() {
-    if (modal && modalWindow) {
-      modal.classList.remove("opacity-100");
-      modal.classList.add("opacity-0", "pointer-events-none");
-      modalWindow.classList.remove("scale-100");
-      modalWindow.classList.add("scale-95");
-      document.body.style.overflow = "auto";
-    }
-  }
-
-  openTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", openModal);
-  });
-
-  closeBtn?.addEventListener("click", closeModal);
 
   modal?.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      closeModal();
-    }
-  });
-
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeModal();
+    const dialogDimensions = modal.getBoundingClientRect();
+    if (
+      e.clientX < dialogDimensions.left ||
+      e.clientX > dialogDimensions.right ||
+      e.clientY < dialogDimensions.top ||
+      e.clientY > dialogDimensions.bottom
+    ) {
+      modal.close();
     }
   });
 </script>
