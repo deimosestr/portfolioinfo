@@ -31,7 +31,7 @@ This is a practice project created specifically to learn, master the basics, and
 
 ## Screenshots
 
-![Main dashboard view](assets/mainportfolio.png)
+![Main dashboard view](src/assets/mainportfolio.png)
 
 ---
 
